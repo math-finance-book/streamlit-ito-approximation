@@ -9,6 +9,29 @@ st.set_page_config(
     layout="wide"
 )
 
+# CSS for responsive iframe scaling
+st.markdown("""
+<style>
+/* Make the entire app responsive */
+.main .block-container {
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+/* Scale content to fit iframe */
+.stApp {
+    transform-origin: top left;
+    width: 100%;
+}
+
+/* Ensure plots scale properly */
+.js-plotly-plot {
+    width: 100% !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 def b_motion_np(n, m, T, seeded=True):
     """Generate Brownian motion paths"""
     dt = T/n  # partition the total time interval into equally spaced intervals of length dt
