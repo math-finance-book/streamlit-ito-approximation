@@ -113,21 +113,39 @@ def create_ito_plots(n, T):
 
     return fig1, fig2
 
-# Sidebar controls
-with st.sidebar:
-    n = st.selectbox(
-        "Number of time subdivisions:",
-        options=[10, 100, 1000, 10000],
-        index=1
-    )
-
-    time_horizon = st.slider(
-        "Time horizon:",
-        min_value=0.1,
-        max_value=1.0,
-        value=0.5,
-        step=0.1
-    )
+# Top control area with shaded background
+with st.container():
+    st.markdown("""
+        <style>
+        .control-area {
+            background-color: #f0f2f6;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        </style>
+        <div class="control-area">
+        """, unsafe_allow_html=True)
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        n = st.selectbox(
+            "Number of time subdivisions:",
+            options=[10, 100, 1000, 10000],
+            index=1
+        )
+    
+    with col2:
+        time_horizon = st.slider(
+            "Time horizon:",
+            min_value=0.1,
+            max_value=1.0,
+            value=0.5,
+            step=0.1
+        )
+    
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # Generate and display plots
 fig1, fig2 = create_ito_plots(n, time_horizon)
