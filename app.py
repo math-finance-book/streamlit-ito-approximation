@@ -57,7 +57,7 @@ def create_ito_plots(n, T):
         x=t[1:, 0],
         y=G(Bt[1:n + 1, 0]),
         mode="lines",
-        name=r'Exact Solution: $\mathrm{e}^B_t$',
+        name='Exact Solution',
         line=dict(color='blue', width=2)
     ))
     
